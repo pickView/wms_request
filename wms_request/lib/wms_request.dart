@@ -19,17 +19,6 @@ enum RequestMethod {
 }
 
 class WMSRequest {
-  factory WMSRequest() => _getInstance();
-  static WMSRequest get instance => _getInstance();
-  static WMSRequest _instance;
-
-  static WMSRequest _getInstance() {
-    if (_instance == null) {
-      _instance = WMSRequest._init();
-    }
-    return _instance;
-  }
-
   /// 连接超时
   static const int CONNECT_TIMEOUT = 30 * 1000;
 
@@ -37,6 +26,18 @@ class WMSRequest {
   static const int RECEIVE_TIMEOUT = 30 * 1000;
 
   Dio _dio;
+
+  String baseUrl;
+
+  factory WMSRequest(String baseUrl) => _getInstance(baseUrl);
+  static WMSRequest _instance;
+
+  static WMSRequest _getInstance(String baseUrl) {
+    if (_instance == null) {
+      _instance = WMSRequest._init();
+    }
+    return _instance;
+  }
 
   WMSRequest._init() {
     if (_dio == null) {
