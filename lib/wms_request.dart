@@ -87,7 +87,7 @@ class WMSRequest {
       Response response;
       response = await _dio.request(path,
           data: params,
-          queryParameters: params,
+          // queryParameters: params,
           // cancelToken: cancelToken,
           options: options,
           onSendProgress: onSendProgress,

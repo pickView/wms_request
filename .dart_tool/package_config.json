@@ -1,0 +1,176 @@
+{
+  "configVersion": 2,
+  "packages": [
+    {
+      "name": "async",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/async-2.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "boolean_selector",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/boolean_selector-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "characters",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/characters-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "charcode",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/charcode-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "clock",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/clock-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "collection",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/collection-1.15.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "device_info",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/device_info-2.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "device_info_platform_interface",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/device_info_platform_interface-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "dio",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/dio-4.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "fake_async",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/fake_async-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter",
+      "rootUri": "file:///Users/jochen/developer/flutter/packages/flutter",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_test",
+      "rootUri": "file:///Users/jochen/developer/flutter/packages/flutter_test",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "http_parser",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/http_parser-4.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "matcher",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/matcher-0.12.10",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "meta",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/meta-1.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "package_info",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/package_info-0.4.3+4",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "path",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/path-1.8.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "plugin_platform_interface",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/plugin_platform_interface-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "sky_engine",
+      "rootUri": "file:///Users/jochen/developer/flutter/bin/cache/pkg/sky_engine",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "source_span",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/source_span-1.8.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "stack_trace",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/stack_trace-1.10.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "stream_channel",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/stream_channel-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "string_scanner",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/string_scanner-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "term_glyph",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/term_glyph-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "test_api",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/test_api-0.2.19",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "typed_data",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/typed_data-1.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "vector_math",
+      "rootUri": "file:///Users/jochen/developer/flutter/.pub-cache/hosted/mirrors.tuna.tsinghua.edu.cn%2547dart-pub/vector_math-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "wms_request",
+      "rootUri": "../",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    }
+  ],
+  "generated": "2021-09-07T02:38:39.440609Z",
+  "generator": "pub",
+  "generatorVersion": "2.12.3"
+}
