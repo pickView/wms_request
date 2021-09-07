@@ -29,20 +29,21 @@ class WMSRequest {
 
   String baseUrl;
 
-  factory WMSRequest(String baseUrl) => _getInstance(baseUrl);
   static WMSRequest _instance;
+
+  factory WMSRequest(String baseUrl) => _getInstance(baseUrl);
 
   static WMSRequest _getInstance(String baseUrl) {
     if (_instance == null) {
-      _instance = WMSRequest._init();
+      _instance = WMSRequest._init(baseUrl);
     }
     return _instance;
   }
 
-  WMSRequest._init() {
+  WMSRequest._init(String baseUrl) {
     if (_dio == null) {
       BaseOptions options = BaseOptions(
-        baseUrl: "http://localhost:8080",
+        baseUrl: baseUrl,
         connectTimeout: CONNECT_TIMEOUT,
         receiveTimeout: RECEIVE_TIMEOUT,
         contentType: "application/json",
