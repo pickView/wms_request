@@ -6,6 +6,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:wms_request/wms_request.dart';
 import 'package:wms_request/wms_response.dart';
 import 'dart:developer';
 
@@ -16,12 +17,17 @@ class WMSInterceptors extends Interceptor {
   // 拦截器
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    /// 添加token
-    if (options.path.contains('token/get')) {
-      options.queryParameters.remove('sidWms');
+    
+    if (options.headers.containsKey('needToken')) {
+       if (!options.headers['needToken']) {
+         options.queryParameters.remove(WMSRequest.keyOfToken);
+       }
+       options.headers.remove('needToken');
     }
+
+    log('baseUrl--------${options.baseUrl}');
     log('path-----------${options.path}');
-    log('headers-----------${options.headers}');
+    log('queryParameters-----------${options.queryParameters}');
     log('parameter-----------${options.data}');
     // 更多业务需求
     return super.onRequest(options, handler);
@@ -29,10 +35,8 @@ class WMSInterceptors extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    if (response != null) {
-      var responseString = response.toString();
-      log("--------------response--------------:$responseString");
-    }
+    var responseString = response.toString();
+    log("--------------response--------------:$responseString");
     if (response.statusCode == 200) {
       if (response.data is Map) {
         response.data = WMSResposnse(success: true, message: "请求成功", data: response.data['data']);
@@ -45,50 +49,66 @@ class WMSInterceptors extends Interceptor {
   }
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) {
+  void onError(DioException err, ErrorInterceptorHandler handler) {
     log("--------------error msg----------:${err.response?.toString() ?? ''}-------${err.type}");
 
     switch (err.type) {
-      // 连接服务器超时
-      case DioErrorType.connectTimeout:
+      case DioExceptionType.connectionTimeout:
         {
-          // 根据自己的业务需求来设定该如何操作,可以是弹出框提示/或者做一些路由跳转处理
+          //
         }
         break;
-      // 响应超时
-      case DioErrorType.receiveTimeout:
+      case DioExceptionType.sendTimeout:
         {
-          // 根据自己的业务需求来设定该如何操作,可以是弹出框提示/或者做一些路由跳转处理
+          //
         }
         break;
       // 发送超时
-      case DioErrorType.sendTimeout:
+      case DioExceptionType.receiveTimeout:
         {
-          // 根据自己的业务需求来设定该如何操作,可以是弹出框提示/或者做一些路由跳转处理
+          //
         }
         break;
       // 请求取消
-      case DioErrorType.cancel:
+      case DioExceptionType.badCertificate:
         {
-          // 根据自己的业务需求来设定该如何操作,可以是弹出框提示/或者做一些路由跳转处理
+          log('error=====badCertificate');
         }
         break;
       // 404/503错误
-      case DioErrorType.response:
-        {}
+      case DioExceptionType.badResponse:
+        {
+          // error
+        }
         break;
       // other 其他错误类型
-      case DioErrorType.other:
-        {}
+      case DioExceptionType.cancel:
+        {
+          log("DioExceptionType ==== cancel");
+        }
+        break;
+      case DioExceptionType.connectionError:
+        break;
+      case DioExceptionType.unknown:
         break;
     }
-    dynamic errorJson = jsonDecode(jsonEncode(err.response.data));
+    if (err.response == null) {
+      Response<WMSResposnse> response = Response(requestOptions: err.requestOptions);
+      response.data = WMSResposnse(
+        success: false,
+        message: '未知错误',
+        data: {},
+      );
+      return handler.resolve(response);
+    }
+    var newResponse = err.response!;
+    dynamic errorJson = jsonDecode(jsonEncode(newResponse));
     // 过期token，TokenRefreshInterceptor单独处理
-    if (err.response.toString().contains(kTokenExpired) ||
-        err.response.toString().contains(kTokenExpiredTarget)) {
+    if (newResponse.toString().contains(kTokenExpired) ||
+        newResponse.toString().contains(kTokenExpiredTarget)) {
       return handler.next(err);
     }
-    if (errorJson is Map) {
+    if (errorJson is Map<String, dynamic>) {
       Map<String, dynamic> error = errorJson;
       String tempMessage = error["message"] ?? error["errorMsg"] ?? "未知错误";
       String tempErrorId;
@@ -100,17 +120,14 @@ class WMSInterceptors extends Interceptor {
         tempErrorId = error["errorCtx"] ?? '';
       }
       String errorMsg = tempMessage;
-      if (tempErrorId != null) {
-        errorMsg = '$errorMsg,traceId:$tempErrorId';
-      }
+      errorMsg = '$errorMsg,traceId:$tempErrorId';
       log('========$errorMsg');
-      Response response = err.response;
-      response.data = WMSResposnse(
+      newResponse.data = WMSResposnse(
         success: false,
         message: errorMsg,
         data: errorJson,
       );
-      return handler.resolve(response);
+      return handler.resolve(newResponse);
     } else if (errorJson is String) {
       String tempMessage = '';
       if (errorJson.contains("<html>") && errorJson.contains("502 Bad Gateway")) {
@@ -118,21 +135,19 @@ class WMSInterceptors extends Interceptor {
       } else {
         tempMessage = "服务器异常，请稍后再试";
       }
-      Response response = err.response;
-      response.data = WMSResposnse(
+      newResponse.data = WMSResposnse(
         success: false,
         message: tempMessage,
         data: errorJson,
       );
-      return handler.resolve(response);
+      return handler.resolve(newResponse);
     } else {
-      Response response = err.response;
-      response.data = WMSResposnse(
+      newResponse.data = WMSResposnse(
         success: false,
         message: '未知错误',
         data: {},
       );
-      return handler.resolve(response);
+      return handler.resolve(newResponse);
     }
   }
 }
